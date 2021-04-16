@@ -1,11 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
+import axios from "axios";
 import { Row, Col, Button, Steps} from 'antd';
-import { ArrowLeftOutlined, UserOutlined, ThunderboltOutlined, SmileOutlined } from '@ant-design/icons';
-import Data from "../testData.json";
+import { ArrowLeftOutlined, UserOutlined, LoadingOutlined, SmileOutlined } from '@ant-design/icons';
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
-
-const orderData = Data.orders;
-const { Step } = Steps;
+import { useParams } from 'react-router-dom';
 
 function Map() {
   return (
@@ -17,47 +15,51 @@ function Map() {
 }
 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
+const { Step } = Steps;
 
-class OrderDetails extends Component {
-  render() {
-    return (
+function OrderDetails() {
+  const { id } = useParams();
+  const url = `https://6079bca0460a6600174fc355.mockapi.io/Order_Detail/3`;
+  const [order, setOrder] = useState(null);
+
+  let content = null;
+
+  useEffect(()=> {
+    axios.get(url)
+      .then(response => {
+        setOrder(response.data)
+      })
+  }, [url])
+
+  if(order) {
+    content =
       <Row className="order-details">
         <Button type="primary"
                 size="default"
                 className="previous-btn"><ArrowLeftOutlined />
         </Button>
         <div className="order-id">
-          {
-            orderData.map((s)=>{
-              return(<p>Order ID: #{s.Order_id}</p>)
-            })
-          }
+          Order ID: #{order.order_id}
         </div>
         <Col span={8} className="left-side">
-          {
-            orderData.map((s) => {
-              return (
-                <div>
-                  <div className="order-status">
-                    Order Status: {s.Order_status.toString()}
-                  </div>
-                  <div className="estimate-time">
-                    Estimate Delivery Time: {s.Estimated_Delivery_Time}
-                  </div>
-                  <div className="address">
-                    Address: {s.Address}
-                  </div>
-                  <div className="order-progress-bar">
-                    <Steps>
-                      <Step status="finish" title="Dispatch" icon={<UserOutlined />} />
-                      <Step status="process" title="Delivering" icon={<ThunderboltOutlined />} />
-                      <Step status="wait" title="Done" icon={<SmileOutlined />} />
-                    </Steps>
-                  </div>
-                </div>
-              )
-            })
-          }
+          <div>
+            <div className="order-status">
+              Order Status: {order.order_status.toString()}
+            </div>
+            <div className="estimate-time">
+              Estimate Delivery Time: {order.estimate_time}
+            </div>
+            <div className="address">
+              Address: {order.address}, {order.city} {order.state}
+            </div>
+            <div className="order-progress-bar">
+              <Steps>
+                <Step status="finish" title="Dispatch" icon={<UserOutlined/>}/>
+                <Step status="process" title="Delivering" icon={<LoadingOutlined/>}/>
+                <Step status="wait" title="Done" icon={<SmileOutlined/>}/>
+              </Steps>
+            </div>
+          </div>
         </Col>
         <Col span={14} className="right-side">
           <WrappedMap
@@ -69,8 +71,13 @@ class OrderDetails extends Component {
           </WrappedMap>
         </Col>
       </Row>
-    );
   }
+
+  return (
+    <div>
+      {content}
+    </div>
+  )
 }
 
 export default OrderDetails;
