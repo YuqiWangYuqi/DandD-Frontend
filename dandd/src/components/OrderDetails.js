@@ -47,11 +47,11 @@ function OrderDetails() {
             <div className="order-status">
               <p>Order Status: {order.order_status.toString()}</p>
             </div>
-            <div className="estimate-time">
-              <p>Estimate Delivery Time: {order.estimate_time}</p>
-            </div>
             <div className="address">
               <p>Address: {order.address}, {order.city} {order.state}</p>
+            </div>
+            <div className="estimate-time">
+              <p>Estimate Time: {order.estimate_time}</p>
             </div>
             <div className="order-progress-bar">
               <Steps>
