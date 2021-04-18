@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import { Row, Col, Button, Steps} from 'antd';
-import { ArrowLeftOutlined, UserOutlined, LoadingOutlined, SmileOutlined } from '@ant-design/icons';
-import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
-import { useParams } from 'react-router-dom';
+import {Row, Col, Button, Steps} from 'antd';
+import {ArrowLeftOutlined, UserOutlined, LoadingOutlined, SmileOutlined} from '@ant-design/icons';
+import {GoogleMap, withScriptjs, withGoogleMap} from "react-google-maps";
+import {useParams} from 'react-router-dom';
 
 function Map() {
   return (
@@ -15,35 +15,37 @@ function Map() {
 }
 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
-const { Step } = Steps;
+const {Step} = Steps;
 
 function OrderDetails() {
-  const { order_id } = useParams();
+  const {order_id} = useParams();
   const url = `https://6079bca0460a6600174fc355.mockapi.io/Order_Details/${order_id}`;
   console.log("user id: " + order_id)
   const [order, setOrder] = useState(null);
 
   let content = null;
 
-  useEffect(()=> {
+  useEffect(() => {
     axios.get(url)
       .then(response => {
         setOrder(response.data)
       })
   }, [url])
 
-  if(order) {
+  if (order) {
     content =
       <Row className="order-details">
-        <Button type="primary"
-                size="default"
-                className="previous-btn"><ArrowLeftOutlined />
-        </Button>
-        <div className="order-id">
-          Order ID: #{order.order_id}
+        <div className="detail-header">
+          <Button type="primary"
+                  size="default"
+                  className="previous-btn"><ArrowLeftOutlined/>
+          </Button>
+          <div className="order-id">
+            Order ID: #{order.order_id}
+          </div>
         </div>
-        <Col span={9} className="left-side">
-          <div>
+        <Col span={10} className="left-side">
+          <div className="order-container">
             <div className="order-status">
               <p>Order Status: {order.order_status.toString()}</p>
             </div>
