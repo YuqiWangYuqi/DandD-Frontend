@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import { Row, Col, Button, Steps} from 'antd';
 import { ArrowLeftOutlined, UserOutlined, LoadingOutlined, SmileOutlined } from '@ant-design/icons';
@@ -18,8 +18,9 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
 const { Step } = Steps;
 
 function OrderDetails() {
-  const { id } = useParams();
-  const url = `https://6079bca0460a6600174fc355.mockapi.io/Order_Detail/3`;
+  const { order_id } = useParams();
+  const url = `https://6079bca0460a6600174fc355.mockapi.io/Order_Details/${order_id}`;
+  console.log("user id: " + order_id)
   const [order, setOrder] = useState(null);
 
   let content = null;
@@ -41,16 +42,16 @@ function OrderDetails() {
         <div className="order-id">
           Order ID: #{order.order_id}
         </div>
-        <Col span={8} className="left-side">
+        <Col span={9} className="left-side">
           <div>
             <div className="order-status">
-              Order Status: {order.order_status.toString()}
+              <p>Order Status: {order.order_status.toString()}</p>
             </div>
             <div className="estimate-time">
-              Estimate Delivery Time: {order.estimate_time}
+              <p>Estimate Delivery Time: {order.estimate_time}</p>
             </div>
             <div className="address">
-              Address: {order.address}, {order.city} {order.state}
+              <p>Address: {order.address}, {order.city} {order.state}</p>
             </div>
             <div className="order-progress-bar">
               <Steps>
@@ -61,7 +62,7 @@ function OrderDetails() {
             </div>
           </div>
         </Col>
-        <Col span={14} className="right-side">
+        <Col span={13} className="right-side">
           <WrappedMap
             googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}
             loadingElement={<div style={{height: `100%`}}/>}
