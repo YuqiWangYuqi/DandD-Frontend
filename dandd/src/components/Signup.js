@@ -38,7 +38,7 @@ export default function Signup() {
     <div>
       <h2></h2>
     </div>
-      <Card border="light" style={{ width: '18rem' }}>
+      <Card className="d-flex align-items-center justify-content-center" border="light" >
         <Card.Body>
           <h2 className="text-center mb-2">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
