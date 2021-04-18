@@ -2,6 +2,7 @@
 @import "./styles/Header.css";
 @import "./styles/Footer.css";
 @import "./styles/OrderDetails.css";
+@import "./styles/Profile.css";
 @import '~antd/dist/antd.css';
 
 body {

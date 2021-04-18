@@ -17,49 +17,49 @@
   font-size: 1.55em;
   font-weight: bolder;
   font-family: Arial, Helvetica, sans-serif;
-  margin-right: 1000px;
+  margin-right: 1030px;
   margin-top: -30px;
   margin-bottom: 20px;
 }
 
 .order-status {
+  float: left;
   position: relative;
   font-weight: bold;
   font-size: 1.35em;
   font-family: Arial, Helvetica, sans-serif;
+  padding-left: 30px;
   margin-top: 50px;
-  margin-right: 250px;
 }
 
 .estimate-time {
+  float: left;
   position: relative;
   font-weight: bold;
   font-size: 1.35em;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 30px;
-  margin-right: 125px;
+  padding-left: 30px;
 }
 
 .address {
+  float: left;
   position: relative;
   font-weight: bold;
   font-size: 1.35em;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 30px;
-  margin-left: 26px;
+  padding-left: 30px;
 }
 
 .order-progress-bar {
   position: relative;
-  margin-top: 100px;
-  margin-right: 50px;
+  padding-top: 350px;
+  padding-right: 100px;
 }
 
 .left-side {
   background-color: lightsteelblue;
   margin-left: 50px;
   height: 500px;
-  border-radius: 30px;
 }
 
 .right-side {
