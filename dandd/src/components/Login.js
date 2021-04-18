@@ -31,7 +31,7 @@ export default function Login() {
     <div>
       <h2 ></h2>
     </div>
-      <Card border="light">
+      <Card className="d-flex align-items-center justify-content-center" border="light">
         <Card.Body>
           <h2 className="text-center mb-4">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}

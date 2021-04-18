@@ -17,22 +17,21 @@ function App() {
       <Router>
       <AuthProvider>
         <Header />
-        <Container className="d-flex align-items-center justify-content-center"
-                   style={{ minHeight: "80vh" }}>
-          <div className="w-100" style={{ maxWidth: "300px" }}>
+
               <Switch>
+
+                <Route path="/login" component={Login} />
+                <Route exact path="/" component={Signup} />
+                <Route exact path="/Dashboard" component={Dashboard} />
                 <Route path="/orderDetails/:order_id">
                     <OrderDetails />
                 </Route>
                 <Route path="/profile/:user_id">
                     <Profile />
                 </Route>
-                <Route path="/login" component={Login} />
-                <Route exact path="/" component={Signup} />
-                <Route exact path="/Dashboard" component={Dashboard} />
+                
               </Switch>
-          </div>
-          </Container>
+
         <Footer />
       </AuthProvider>
       </Router>
