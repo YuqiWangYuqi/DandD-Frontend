@@ -4,6 +4,7 @@
 @import "./styles/OrderDetails.css";
 @import "./styles/Profile.css";
 @import "./styles/Dashboard.css";
+@import "./styles/CreateOrder.css";
 @import '~antd/dist/antd.css';
 
 body {

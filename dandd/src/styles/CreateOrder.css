@@ -1,0 +1,25 @@
+.container {
+  position: relative;
+  margin-top: 50px;
+  height: 500px;
+}
+
+.sender {
+  background-color: lavender;
+  height: 500px;
+  margin-right: 30px;
+}
+
+.package {
+  background-color: lightgoldenrodyellow;
+  height: 500px;
+  margin-right: 30px;
+}
+
+.recipient {
+  background-color: linen;
+  height: 500px;
+}
+
+
+
