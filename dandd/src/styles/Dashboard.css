@@ -1,0 +1,21 @@
+.dashboard-header {
+  display: flex;
+  align-content: flex-start;
+  justify-content: center;
+  margin-top: 75px;
+  margin-bottom: 15px;
+}
+
+.make-order {
+  position: relative;
+  margin-right: 150px;
+}
+
+.dashboard-container {
+  position: relative;
+  width: 1000px;
+  height: 450px;
+  background-color: linen;
+  margin: 0 auto;
+}
+
