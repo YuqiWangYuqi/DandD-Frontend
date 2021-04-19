@@ -8,7 +8,8 @@ import Profile from "./Profile";
 import Footer from "./Footer";
 import Login from "./Login"
 import Signup from './Signup';
-import Dashboard from './Dashboard'
+import Dashboard from './Dashboard';
+import CreateOrder from './CreateOrder';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
                 </Route>
                 <Route path="/profile/:user_id">
                     <Profile />
+                </Route>
+                <Route path="/CreateOrder">
+                  <CreateOrder />
                 </Route>
               </Switch>
 
